@@ -1,4 +1,4 @@
-jquery-hash
+jQuery Hash
 ===========
 
-jQuery hash
+The jQuery plugin for manipulate with hash
