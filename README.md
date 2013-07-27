@@ -1,4 +1,4 @@
 jQuery Hash
 ===========
 
-The jQuery plugin for manipulate with hash
+The jQuery plugin for manipulating with hash

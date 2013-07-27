@@ -5,7 +5,40 @@
  * @email: ducdhm@gmail.com
  * @skype: ducdhm
  */
-(function ($, loc, undefined) {
+(function ($, loc, String, undefined) {
+	/**
+	 * Encode url with spaces will be encoded into `+`
+	 * @method encodeUrl
+	 * @return {String} The encoded string
+	 */
+	if (!String.prototype.encodeUrl) {
+		String.prototype.encodeUrl = function () {
+			return encodeURIComponent(this).replace(/%20/g, '+');
+		};
+	}
+
+	/**
+	 * Decode url with `+` will be encoded into space
+	 * @method decodeUrl
+	 * @return {String} The decoded string
+	 */
+	if (!String.prototype.decodeUrl) {
+		String.prototype.decodeUrl = function () {
+			return decodeURIComponent(this.replace(/\+/g, '%20'));
+		};
+	}
+
+	/**
+	 * Remove BOM character in encoded URL string
+	 * @method removeBOM
+	 * @return {String} The removed BOM string
+	 */
+	if (!String.prototype.removeBOM) {
+		String.prototype.removeBOM = function () {
+			return this.replace(/%EF%BB%BF/gi, '');
+		}
+	}
+
 	/**
 	 * Check key of hash is existed or not
 	 * @method isKeyExisted
@@ -72,7 +105,7 @@
 		 * Get value of a hash key
 		 * @method get
 		 * @param {String} key The hash key will be got
-		 * @returns {String|Null} The value of hash key
+		 * @returns {String|Undefined} The value of hash key
 		 */
 		get: function (key) {
 			var hash = _getHash();
@@ -93,6 +126,32 @@
 		},
 
 		/**
+		 * Get all pair key and value of hash, that are separated by `&`
+		 * @method getAll
+		 * @return {Object}
+		 */
+		getAll: function () {
+			var hash = _getHash(),
+				all = {};
+
+			if (hash.indexOf('&') !== -1) {
+				hash = hash.split('&');
+
+				for (var i = 0, pair; pair = hash[i]; i++) {
+					if (pair.indexOf('=') !== -1) {
+						var index = pair.indexOf('='),
+							key = pair.substr(0, index),
+							value = pair.substr(index + 1, pair.length);
+
+						all[key] = isNaN(+value) ? value : +value;
+					}
+				}
+			}
+
+			return all;
+		},
+
+		/**
 		 * Set value for a hash key
 		 * @method set
 		 * @param {String|Object} key The hash key will be set value
@@ -102,10 +161,10 @@
 			var hash = _getHash();
 
 			if (typeof key === 'string') {
-				hash = _setHash(key, value, hash);
+				hash = _setHash(key, '' + value, hash);
 			} else {
 				for (var _key in key) {
-					hash = _setHash(_key, key[_key], hash);
+					hash = _setHash(_key, '' + key[_key], hash);
 				}
 			}
 
@@ -132,4 +191,4 @@
 		}
 	};
 
-}(jQuery, window.location));
+}(jQuery, window.location, String));

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery Hash | The jQuery plugin for manipulating the hash</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/doc.css" />
+	<script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../jquery.hash.js"></script>
+	<script type="text/javascript" src="../resources/js/doc.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="#">jQuery Hash</a>
+				<ul class="nav">
+					<li class="active"><a>Home</a></li>
+				</ul>
+			</div>
+		</div>
+		<form class="form-horizontal">
+			<fieldset>
+				<legend>$.hash.set()</legend>
+				<div class="control-group">
+					<label class="control-label">Hash:</label>
+					<div class="controls">
+						<div class="hash">
+							<input type="text" id="txtSetHashKey0" value="" placeholder="Hash key" />
+							<input type="text" id="txtSetHashValue0" value="" placeholder="Hash value" />
+							<button type="button" class="btn btn-primary btn-add-hash"><i class="icon-plus icon-white"></i></button>
+						</div>
+						<br />
+						<button id="btnSetHash" type="button" class="btn btn-primary">Set</button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>$.hash.get()</legend>
+				<div class="control-group">
+					<label class="control-label">Hash:</label>
+					<div class="controls">
+						<input type="text" id="txtGetHashKey" value="" placeholder="Hash key" />
+						<input type="text" id="txtGetHashValue" value="" readonly placeholder="Hash value" />
+						<button id="btnGetHash" type="button" class="btn btn-primary">Get</button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>$.hash.getAll()</legend>
+				<div class="control-group">
+					<label class="control-label">Hash:</label>
+					<div class="controls">
+						<button id="btnGetAllHash" type="button" class="btn btn-primary">Get all</button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>$.hash.remove()</legend>
+				<div class="control-group">
+					<label class="control-label">Hash:</label>
+					<div class="controls">
+						<button id="btnGetAllHash" type="button" class="btn btn-primary">Get all</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
