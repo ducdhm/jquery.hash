@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../resources/css/doc.css" />
 	<script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../resources/js/jquery.ba-hashchange.min.js"></script>
 	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../jquery.hash.js"></script>
 	<script type="text/javascript" src="../resources/js/doc.js"></script>
@@ -24,7 +25,6 @@
 			<fieldset>
 				<legend>$.hash.set()</legend>
 				<div class="control-group">
-					<label class="control-label">Hash:</label>
 					<div class="controls">
 						<div class="hash">
 							<input type="text" id="txtSetHashKey0" value="" placeholder="Hash key" />
@@ -39,7 +39,6 @@
 			<fieldset>
 				<legend>$.hash.get()</legend>
 				<div class="control-group">
-					<label class="control-label">Hash:</label>
 					<div class="controls">
 						<input type="text" id="txtGetHashKey" value="" placeholder="Hash key" />
 						<input type="text" id="txtGetHashValue" value="" readonly placeholder="Hash value" />
@@ -50,7 +49,6 @@
 			<fieldset>
 				<legend>$.hash.getAll()</legend>
 				<div class="control-group">
-					<label class="control-label">Hash:</label>
 					<div class="controls">
 						<button id="btnGetAllHash" type="button" class="btn btn-primary">Get all</button>
 					</div>
@@ -59,9 +57,13 @@
 			<fieldset>
 				<legend>$.hash.remove()</legend>
 				<div class="control-group">
-					<label class="control-label">Hash:</label>
 					<div class="controls">
-						<button id="btnGetAllHash" type="button" class="btn btn-primary">Get all</button>
+						<div class="hash">
+							<input type="text" id="txtRemoveHashKey0" value="" placeholder="Hash key" />
+							<button type="button" class="btn btn-primary btn-add-hash"><i class="icon-plus icon-white"></i></button>
+						</div>
+						<br />
+						<button id="btnRemoveHash" type="button" class="btn btn-primary">Remove</button>
 					</div>
 				</div>
 			</fieldset>
