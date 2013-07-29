@@ -1,7 +1,7 @@
 /**
  * jQuery hash
  * @version: 0.1
- * @author: ducdhm
+ * @author: Duc Doan Hoang Minh
  * @email: ducdhm@gmail.com
  * @skype: ducdhm
  */

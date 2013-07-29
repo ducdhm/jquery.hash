@@ -3,7 +3,7 @@
  * The enhanced jQuery plugin for hashchange event. Based on jQuery hashchagne event of Ben Alman.
  * @version: 0.1
  * @require: jquery.hash, jquery.hashchange
- * @author: ducdhm
+ * @author: Duc Doan Hoang Minh
  * @email: ducdhm@gmail.com
  * @skype: ducdhm
  */
