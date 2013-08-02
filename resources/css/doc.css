@@ -1,0 +1,16 @@
+fieldset {
+	margin-bottom: 40px;
+}
+
+fieldset legend {
+	font-size: 26px;
+}
+
+.hash {
+	margin-bottom: 10px;
+}
+
+#all-hash {
+	height: 150px;
+	overflow-y: scroll;
+}
