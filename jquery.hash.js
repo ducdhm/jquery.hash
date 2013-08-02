@@ -148,6 +148,8 @@
 							key = pair.substr(0, index),
 							value = pair.substr(index + 1, pair.length);
 
+						value = value.decodeUrl();
+
 						all[key] = isNaN(+value) ? value : +value;
 					}
 				}
