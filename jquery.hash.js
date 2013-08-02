@@ -62,6 +62,10 @@
 
 		if (href.indexOf('#') !== -1) {
 			hash = href.split('#')[1];
+
+			if (hash.indexOf('=') === -1) {
+				hash = '';
+			}
 		}
 
 		return hash;
@@ -105,7 +109,7 @@
 		 * Get value of a hash key
 		 * @method get
 		 * @param {String} key The hash key will be got
-		 * @returns {String|Undefined} The value of hash key
+		 * @returns {String|Number|Undefined} The value of hash key
 		 */
 		get: function (key) {
 			var hash = _getHash();
@@ -117,7 +121,8 @@
 						_key = pair.substr(0, index);
 
 					if (_key === key) {
-						return pair.substr(index + 1, pair.length).removeBOM().decodeUrl();
+						var value = pair.substr(index + 1, pair.length).removeBOM().decodeUrl();
+						return isNaN(+value) ? value : +value;
 					}
 				}
 			} else {
