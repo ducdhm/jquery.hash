@@ -47,43 +47,44 @@
 	 * @returns {Boolean}
 	 */
 	var isKeyExisted = function (key, hash) {
-		return (new RegExp(key + '=(.)*[&]*')).test(hash);
+		return (new RegExp('[#&]+' + key + '=(.)*[&]*')).test(hash);
 	};
 
 	/**
 	 * Get hash from `window.location.href` not from `window.location.hash` because `window.location.hash` always
 	 * decodes the encoded values
-	 * @method _getHash
+	 * @method getHash
 	 * @return {String} The hash
 	 */
-	var _getHash = function () {
+	var getHash = function () {
 		var href = location.href,
 			hash = '';
 
 		if (href.indexOf('#') !== -1) {
 			hash = href.split('#')[1];
 
-			if (hash.indexOf('=') === -1) {
+
+			if (hash.indexOf('=') <= 0) {
 				hash = '';
 			}
 		}
 
-		return hash;
+		return '#' + hash;
 	};
 
 	/**
 	 * Set key for value in a hash
-	 * @method _setHash
+	 * @method setHash
 	 * @param {String} key The hash key will be set value
 	 * @param {String|Number} value The value of key
 	 * @param {String} hash The hash which the key will be set value
 	 * @returns {String} The new hash
 	 */
-	var _setHash = function (key, value, hash) {
+	var setHash = function (key, value, hash) {
 		var key_value_string = key + '=' + value.encodeUrl();
 
 		if (isKeyExisted(key, hash)) {
-			hash = hash.replace(new RegExp(key + '=[^&]*', 'i'), key_value_string);
+			hash = hash.replace(new RegExp('[#&]+' + key + '=[^&]*', 'i'), key_value_string);
 		} else {
 			hash += (hash.indexOf('=') === -1 ? '' : '&') + key_value_string;
 		}
@@ -93,15 +94,36 @@
 
 	/**
 	 * Remove key in a hash
-	 * @method _removeHash
+	 * @method removeHash
 	 * @param {String} key The key will be removed
 	 * @param {String} hash The hash will remove key
 	 * @return {String} The removed key hash
 	 */
-	var _removeHash = function (key, hash) {
-		hash = hash.replace(new RegExp('[&]*' + key + '=[^&$]*', 'i'), '').replace(/^&/, '');
+	var removeHash = function (key, hash) {
+		hash = hash.replace(new RegExp('[#&]+' + key + '=[^&$]*', 'i'), '').replace(/^&/, '');
 
 		return hash === '' ? '!' : hash;
+	};
+
+	/**
+	 * Get key and value from pair string
+	 * @method getKeyValue
+	 * @param {String} pair_string The string which includes key and value. Key and value are separated by `=`.
+	 * @return {Array} [key, value]
+	 */
+	var getKeyValue = function (pair_string) {
+		var result = [];
+
+		if (pair_string.indexOf('=') !== -1) {
+			var index = pair_string.indexOf('='),
+				key = pair_string.substr(0, index),
+				value = pair_string.substr(index + 1, pair_string.length).removeBOM().decodeUrl();
+
+			result.push(key);
+			result.push(isNaN(+value) ? value : +value);
+		}
+
+		return result;
 	};
 
 	$.hash = {
@@ -112,17 +134,15 @@
 		 * @returns {String|Number|Undefined} The value of hash key
 		 */
 		get: function (key) {
-			var hash = _getHash();
+			var hash = getHash().replace('#', '');
 
 			if (isKeyExisted(key, hash)) {
 				hash = hash.split('&');
 				for (var i = 0, pair; pair = hash[i]; i++) {
-					var index = pair.indexOf('='),
-						_key = pair.substr(0, index);
+					pair = getKeyValue(pair);
 
-					if (_key === key) {
-						var value = pair.substr(index + 1, pair.length).removeBOM().decodeUrl();
-						return isNaN(+value) ? value : +value;
+					if (pair[0] === key) {
+						return pair[1];
 					}
 				}
 			} else {
@@ -136,22 +156,24 @@
 		 * @return {Object}
 		 */
 		getAll: function () {
-			var hash = _getHash(),
+			var hash = getHash().replace('#', ''),
 				all = {};
 
 			if (hash.indexOf('&') !== -1) {
 				hash = hash.split('&');
 
 				for (var i = 0, pair; pair = hash[i]; i++) {
-					if (pair.indexOf('=') !== -1) {
-						var index = pair.indexOf('='),
-							key = pair.substr(0, index),
-							value = pair.substr(index + 1, pair.length);
+					pair = getKeyValue(pair);
 
-						value = value.decodeUrl();
-
-						all[key] = isNaN(+value) ? value : +value;
+					if (pair[0]) {
+						all[pair[0]] = pair[1];
 					}
+				}
+			} else if (hash.indexOf('=') !== -1) {
+				var pair = getKeyValue(hash);
+
+				if (pair[0]) {
+					all[pair[0]] = pair[1];
 				}
 			}
 
@@ -165,13 +187,13 @@
 		 * @param {String|Number} value The value of key
 		 */
 		set: function (key, value) {
-			var hash = _getHash();
+			var hash = getHash();
 
 			if (typeof key === 'string') {
-				hash = _setHash(key, '' + value, hash);
+				hash = setHash(key, '' + value, hash);
 			} else {
 				for (var _key in key) {
-					hash = _setHash(_key, '' + key[_key], hash);
+					hash = setHash(_key, '' + key[_key], hash);
 				}
 			}
 
@@ -184,13 +206,13 @@
 		 * @param {String|Array} key The key or array of keys will be removed from hash
 		 */
 		remove: function (key) {
-			var hash = _getHash();
+			var hash = getHash();
 
 			if (typeof key === 'string') {
-				hash = _removeHash(key, hash);
+				hash = removeHash(key, hash);
 			} else {
 				for (var i = 0, _key; _key = key[i]; i++) {
-					hash = _removeHash(_key, hash);
+					hash = '#' + removeHash(_key, hash);
 				}
 			}
 

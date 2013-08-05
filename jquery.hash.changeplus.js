@@ -28,7 +28,7 @@
 	 * @param {Object} config The configuration of hashchange+ event
 	 */
 	$.hash.configEvent = function (config) {
-		options = $.extend(config, DEFAULTS);
+		options = $.extend(DEFAULTS, config);
 	};
 
 	/**
@@ -43,15 +43,17 @@
 	};
 
 	$(function () {
-		var agurs = [];
-
-		if (options.getAll) {
-			agur = [$.hash.getAll(), win.location.hash];
-		}
-
 		$win.on('hashchange', function (e) {
+			var agurs = [];
+
+			if (options.getAll) {
+				agurs = [$.hash.getAll(), win.location.hash];
+			}
+
+			agurs.unshift(e);
+
 			for (var i = 0, event; event = events[i]; i++) {
-				event.apply(this, agurs.unshift(e));
+				event.apply(this, agurs);
 			}
 		});
 
