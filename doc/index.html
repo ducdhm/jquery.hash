@@ -102,6 +102,25 @@ $.hash.getAll()</pre>
 					<button id="btnGetAll" type="button" class="btn btn-primary">Get all</button>
 				</div>
 			</fieldset>
+			<fieldset>
+				<legend>Remove hash key(s)</legend>
+				<div>
+					<h4>Structure:</h4>
+					<pre class="prettyprint linenums">
+/**
+ * @param {String|Array} key The key or array of keys will be removed from hash
+ */
+$.hash.remove(key);</pre>
+				</div>
+				<div class="remove-hash">
+					<h4>Examples:</h4>
+					<div class="hash">
+						<input type="text" value="" placeholder="Hash key" />
+						<button type="button" class="btn btn-primary" id="addRemoveHash" title="Add a key"><i class="icon-plus icon-white"></i></button>
+					</div>
+					<button id="btnRemoveHash" type="button" class="btn btn-primary">Remove</button>
+				</div>
+			</fieldset>
 		</form>
 	</div>
 </body>

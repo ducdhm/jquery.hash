@@ -88,6 +88,42 @@
 			prettyPrint();
 		});
 
+		// Remove hash key(s)
+		var $btnRemoveHash = $('#btnRemoveHash'),
+			$removeHash = $('.remove-hash'),
+			$addRemoveHash = $('#addRemoveHash');
+
+		$addRemoveHash.on('click', function () {
+			$removeHash.find('div.hash:last').after(
+				'<div class="hash">' +
+					'<input type="text" value="" placeholder="Hash key" /> ' +
+					'<button type="button" class="btn btn-danger btn-remove-key" title="Remove this key"><i class="icon-remove icon-white"></i></button>' +
+				'</div>'
+			);
+		});
+
+		$removeHash.on('click', '.btn-remove-key', function () {
+			$(this).parent().remove();
+		});
+
+		$btnRemoveHash.on('click', function () {
+			var keys = [];
+
+			$removeHash.find('div.hash').each(function () {
+				var $hash = $(this),
+					$input = $hash.find('input'),
+					key = $input.eq(0).val().trim();
+
+				if (key) {
+					keys.push(key);
+				}
+			});
+
+			if (keys[0]) {
+				$.hash.remove(keys);
+			}
+		});
+
 		// Prettify code
 		prettyPrint();
 	});

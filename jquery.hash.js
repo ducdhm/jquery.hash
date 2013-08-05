@@ -99,9 +99,9 @@
 	 * @return {String} The removed key hash
 	 */
 	var _removeHash = function (key, hash) {
-		hash = hash.replace(new RegExp('[&]*' + key + '=[^&$]*', 'i'), '').replace(/#[^a-z0-9]/ig, '#');
+		hash = hash.replace(new RegExp('[&]*' + key + '=[^&$]*', 'i'), '').replace(/^&/, '');
 
-		return hash === '#' ? '#!' : hash;
+		return hash === '' ? '!' : hash;
 	};
 
 	$.hash = {
