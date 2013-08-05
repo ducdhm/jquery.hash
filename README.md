@@ -56,5 +56,34 @@ $.hash.get(key)
 
 Example:
 ```
-$.hash.get('name');
+$.hash.get('name'); // return `bobkhin`
+```
+
+Get value of all hash keys
+--------------------------
+Structure:
+```
+/**
+ * @return {Object}
+ */
+$.hash.getAll();
+```
+
+Remove hash key(s)
+------------------
+Structure:
+```
+/**
+ * @param {String|Array} key The key or array of keys will be removed from hash
+ */
+$.hash.remove(key);
+```
+
+Example:
+```
+$.hash.remove('age');
+
+// or
+
+$.hash.remove(['skype', 'email']);
 ```
