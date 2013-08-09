@@ -1,6 +1,6 @@
 /**
- * jQuery hashchange
- * The enhanced jQuery plugin for hashchange event. Based on jQuery hashchagne event of Ben Alman.
+ * jQuery hashchange plus
+ * The enhanced jQuery plugin for hashchange event. Based on jQuery hashchange event of Ben Alman.
  * @version: 0.1
  * @require: jquery.hash, jquery.hashchange
  * @author: Duc Doan Hoang Minh
