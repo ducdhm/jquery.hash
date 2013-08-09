@@ -84,7 +84,7 @@
 		var key_value_string = key + '=' + value.encodeUrl();
 
 		if (isKeyExisted(key, hash)) {
-			hash = hash.replace(new RegExp('[#&]+' + key + '=[^&]*', 'i'), key_value_string);
+			hash = hash.replace(new RegExp('([#&]+)' + key + '=[^&]*', 'i'), '$1' + key_value_string);
 		} else {
 			hash += (hash.indexOf('=') === -1 ? '' : '&') + key_value_string;
 		}

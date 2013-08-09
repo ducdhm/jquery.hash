@@ -13,24 +13,6 @@
 	// Array of hashchange+ events
 	var events = [];
 
-	// Options of hashchange+ event
-	var options = {};
-
-	// Default config of hashchange+ event
-	var DEFAULTS = {
-		getAll: true,
-		runWhenInit: true
-	};
-
-	/**
-	 * Config for hashchange+ event
-	 * @method configEvent
-	 * @param {Object} config The configuration of hashchange+ event
-	 */
-	$.hash.configEvent = function (config) {
-		options = $.extend(DEFAULTS, config);
-	};
-
 	/**
 	 * The hashchange+ event
 	 * @method change
@@ -44,22 +26,12 @@
 
 	$(function () {
 		$win.on('hashchange', function (e) {
-			var agurs = [];
-
-			if (options.getAll) {
-				agurs = [$.hash.getAll(), win.location.hash];
-			}
-
-			agurs.unshift(e);
+			var agurs = [e, $.hash.getAll(), win.location.hash];
 
 			for (var i = 0, event; event = events[i]; i++) {
 				event.apply(this, agurs);
 			}
-		});
-
-		if (options.runWhenInit) {
-			$win.trigger('hashchange');
-		}
+		}).trigger('hashchange');
 	});
 
 }(jQuery, window));
