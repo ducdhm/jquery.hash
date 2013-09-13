@@ -1,6 +1,6 @@
-jQuery Hash
+jQuery Hash Tag
 ===========
-The jQuery plugin for manipulating with hash
+The jQuery plugin for manipulating with hash tag
 
 Set value of a hash key
 -----------------------
