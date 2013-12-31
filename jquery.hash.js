@@ -1,9 +1,10 @@
 /**
- * jQuery hash
- * @version: 0.1
- * @author: Duc Doan Hoang Minh
- * @email: ducdhm@gmail.com
- * @skype: ducdhm
+ * jQuery.hash library v0.1
+ * Copyright (c) 2013 Duc Doan Hoang Minh
+ *
+ * @license https://github.com/bobkhin/jquery.hash/blob/master/LICENSE-MIT
+ *
+ * Date: Thu, Aug 08th, 2013 (GTM+7)
  */
 (function ($, loc, String, undefined) {
 	/**
