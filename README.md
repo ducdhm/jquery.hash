@@ -1,9 +1,9 @@
 jQuery.hash
-===========
+=====
 The jQuery plugin for manipulating with hash in url address
 
 Usage
------------------------
+-----
 ### Set value of a hash key
 Structure:
 ```
@@ -85,7 +85,7 @@ $.hash.remove('age');
 $.hash.remove(['skype', 'email']);
 ```
 License
------------------------
+-----
 ### MIT License
 
 Copyright (c) 2013 Duc Doan Hoang Minh
