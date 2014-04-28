@@ -2,7 +2,7 @@
  * jQuery.hash library v0.1
  * Copyright (c) 2013 Duc Doan Hoang Minh
  *
- * @license https://github.com/bobkhin/jquery.hash/blob/master/LICENSE-MIT
+ * @license https://github.com/bobkhin/jquery.hash/blob/master/LICENSE
  *
  * Date: Thu, Aug 08th, 2013 (GTM+7)
  */

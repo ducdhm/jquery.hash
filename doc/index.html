@@ -3,27 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<title>jQuery.hash | The jQuery plugin for manipulating with hash in url address</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/plugins/bootstrap/3.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/plugins/prettify/prettify.css" />
 	<link rel="stylesheet" type="text/css" href="../resources/css/doc.css" />
-	<link rel="stylesheet" type="text/css" href="../resources/prettify/prettify.css" />
-	<script type="text/javascript" src="../resources/js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+	<script type="text/javascript" src="../resources/plugins/jquery/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="../resources/plugins/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/plugins/prettify/prettify.js"></script>
 	<script type="text/javascript" src="../jquery.hash.js"></script>
 	<script type="text/javascript" src="../jquery.hashchange-plus.js"></script>
 	<script type="text/javascript" src="../resources/js/doc.js"></script>
 </head>
 <body>
 	<div class="container">
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<a class="brand" href="#">jQuery.hasg</a>
-				<ul class="nav pull-right">
-					<li class="active"><a>bobkhin</a></li>
-				</ul>
-			</div>
-		</div>
+		<nav class="navbar navbar-inverse" role="navigation">
+		    <div class="container-fluid">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="#">jQuery.hash</a>
+		        </div>
+		    </div>
+		</nav>
 		<form class="form-horizontal">
 			<fieldset>
 				<legend>Set value of hash key:</legend>
@@ -38,9 +36,17 @@ $.hash.set(key, value);</pre>
 				</div>
 				<div class="set-hash">
 					<h4>Examples:</h4>
-					<input type="text" id="txtSetHashKey" value="" placeholder="Hash key" />
-					<input type="text" id="txtSetHashValue" value="" placeholder="Hash value" />
-					<button id="btnSetHash" type="button" class="btn btn-primary">Set</button>
+					<div class="form-group">
+						<div class="col-md-3">						
+							<input type="text" id="txtSetHashKey" class="form-control" value="" placeholder="Hash key" />
+						</div>
+						<div class="col-md-3">							
+							<input type="text" id="txtSetHashValue" class="form-control" value="" placeholder="Hash value" />
+						</div>
+						<div class="col-md-3">
+							<button id="btnSetHash" type="button" class="btn btn-primary">Set</button>							
+						</div>
+					</div>
 				</div>
 			</fieldset>
 			<fieldset>
@@ -61,9 +67,17 @@ $.hash.set({
 				<div class="set-hashes">
 					<h4>Examples:</h4>
 					<div class="hash">
-						<input type="text" value="" placeholder="Hash key" />
-						<input type="text" value="" placeholder="Hash value" />
-						<button type="button" class="btn btn-primary" id="addSetHash" title="Add a key"><i class="icon-plus icon-white"></i></button>
+						<div class="form-group">
+							<div class="col-md-3">
+								<input type="text" class="form-control" value="" placeholder="Hash key" />
+							</div>
+							<div class="col-md-3">
+								<input type="text" class="form-control" value="" placeholder="Hash value" />
+							</div>
+							<div class="col-md-3">
+								<button type="button" class="btn btn-primary" id="addSetHash" title="Add a key"><i class="glyphicon glyphicon-plus"></i></button>
+							</div>
+						</div>
 					</div>
 					<button id="btnSetHashes" type="button" class="btn btn-primary">Set</button>
 				</div>
@@ -81,9 +95,17 @@ $.hash.get(key);</pre>
 				</div>
 				<div class="get-hash">
 					<h4>Examples:</h4>
-					<input type="text" id="txtGetHashKey" value="" placeholder="Hash key" />
-					<input type="text" id="txtGetHashValue" readonly value="" />
-					<button id="btnGetHash" type="button" class="btn btn-primary">Get</button>
+					<div class="form-group">
+						<div class="col-md-3">
+							<input type="text" id="txtGetHashKey" class="form-control" value="" placeholder="Hash key" />
+						</div>
+						<div class="col-md-3">
+							<input type="text" id="txtGetHashValue" class="form-control" readonly value="" />
+						</div>
+						<div class="col-md-3">
+							<button id="btnGetHash" type="button" class="btn btn-primary">Get</button>
+						</div>
+					</div>
 				</div>
 			</fieldset>
 			<fieldset>
@@ -115,8 +137,14 @@ $.hash.remove(key);</pre>
 				<div class="remove-hash">
 					<h4>Examples:</h4>
 					<div class="hash">
-						<input type="text" value="" placeholder="Hash key" />
-						<button type="button" class="btn btn-primary" id="addRemoveHash" title="Add a key"><i class="icon-plus icon-white"></i></button>
+						<div class="form-group">
+							<div class="col-md-3">
+								<input type="text" class="form-control" value="" placeholder="Hash key" />
+							</div>
+							<div class="col-md-3">
+								<button type="button" class="btn btn-primary" id="addRemoveHash" title="Add a key"><i class="glyphicon glyphicon-plus"></i></button>
+							</div>
+						</div>
 					</div>
 					<button id="btnRemoveHash" type="button" class="btn btn-primary">Remove</button>
 				</div>
