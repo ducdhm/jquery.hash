@@ -1,4 +1,4 @@
-/**
+/*!*
  * jQuery.hash library v0.1
  * Copyright (c) 2013 Duc Doan Hoang Minh
  *
